@@ -1,0 +1,11 @@
+borderFColor = "#B48EAD"
+borderNColor = "#81A1C1"
+gbInactive = "#F8F8F2"
+gbActive = gbInactive
+gbHighLight = "#BD93F9"
+gbThisScreenB = "#F8F8F2"
+gbOtherScreenB = "#BD93F9"
+textNForeG = "#FFFFFF"
+bckgBlue = "#2E3450"
+bckgPurple = "#BD93F9"
+bckgCyan = "#8BCCFD"
