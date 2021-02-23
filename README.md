@@ -1,4 +1,5 @@
-#Qtile-Config
+# Qtile-Config
+
 WillWu88's Qtile config files.
 
 Usage: 
