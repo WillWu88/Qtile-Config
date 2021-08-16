@@ -13,6 +13,7 @@ twoqpercent = " "
 oneqpercent = " "
 batteryLow = " "
 charging = " "
+wpl = '/usr/share/backgrounds/mono.png'
 
 def get_bat_icon():
     batPercent = psutil.sensors_battery().percent
@@ -32,7 +33,7 @@ def get_bat_icon():
         else:
             return batteryLow
 
-batteryIcon = get_bat_icon()
+# batteryIcon = get_bat_icon()
 
 def get_num_monitors():
     num_monitors = 0
@@ -76,32 +77,35 @@ default_screen = Screen(top=bar.Bar(
                 #    scale = 0.9
                 #),
                 widget.TextBox(
-                    text = "",
-                    foreground = "#ffffff",
-                    background = bckgBlue,
-                    # padding = 2,
+                    text = "",
+                    foreground = tertiaryColor2,
+                    background = tertiaryColor1,
+                    padding = 6,
                     fontsize = 15
                 ),
+                widget.Spacer(
+                    length = 5,
+                ),
                 widget.GroupBox(
-                    inactive = gbInactive,
-                    active = gbActive,
+                    inactive = tertiaryColor2,
+                    active = tertiaryColor2,
                     fontsize = 11,
                     margin_y = 3,
                     margin_x = 0,
                     padding_y = 5,
                     padding_x = 2,
                     borderwidth = 3,
-                    this_current_screen_border = textNForeG,
-                    this_screen_border = textNForeG,
-                    other_current_screen_border = bckgPurple,
-                    other_screen_border = bckgPurple,
-                    highlight_color = gbHighLight,
+                    this_current_screen_border = tertiaryColor2,
+                    this_screen_border = tertiaryColor2,
+                    other_current_screen_border = secondaryColor,
+                    other_screen_border = secondaryColor,
+                    highlight_color = primaryColor,
                     highlight_method = "line",
                 ),
                 widget.TaskList(
                     txt_floating = "🗖",
                     max_title_width = 200,
-                    border = bckgPurple,
+                    border = primaryColor,
                     padding_y = 1,
                     borderwidth = 3,
                     highlight_method = "block",
@@ -111,58 +115,58 @@ default_screen = Screen(top=bar.Bar(
                 widget.Sep(
                     linespace = 0,
                     padding = 5,
-                    foreground = bckgBlue,
-                    background = bckgBlue,
+                    foreground = tertiaryColor1,
+                    background = tertiaryColor1,
                 ),
                 widget.TextBox(
                     "",
                     fontsize = 19.5,
                     padding = 0,
-                    foreground = bckgPurple,
-                    background = bckgBlue,
+                    foreground = primaryColor,
+                    background = tertiaryColor1,
                 ),
                 widget.Battery(
-                    foreground = textNForeG,
-                    background = bckgPurple,
+                    foreground = tertiaryColor2,
+                    background = primaryColor,
                 ),
                 widget.TextBox(
                     "",
                     fontsize = 22,
                     padding = 0,
-                    foreground = bckgCyan,
-                    background = bckgPurple,
+                    foreground = secondaryColor,
+                    background = primaryColor,
                 ),
                 widget.TextBox(
                     "Vol:",
                     # padding = 0,
-                    foreground = textNForeG,
-                    background = bckgCyan,
+                    foreground = tertiaryColor2,
+                    background = secondaryColor,
                 ),
                 widget.Volume(
                     # padding = 0,
-                    foreground = textNForeG,
-                    background = bckgCyan,
+                    foreground = tertiaryColor2,
+                    background = secondaryColor,
                 ),
                 widget.TextBox(
                     "",
                     fontsize = 22,
                     padding = 0,
-                    foreground = bckgPurple,
-                    background = bckgCyan,
+                    foreground = primaryColor,
+                    background = secondaryColor,
                 ),
                 widget.Clock(
                     format='%Y-%m-%d %a %I:%M %p',
-                    background = bckgPurple,
+                    background = primaryColor,
                 ),
                 widget.TextBox(
                     "",
                     fontsize = 22,
                     padding = 0,
-                    foreground = bckgCyan,
-                    background = bckgPurple,
+                    foreground = secondaryColor,
+                    background = primaryColor,
                 ),
                 widget.CurrentLayout(
-                    background = bckgCyan,
+                    background = secondaryColor,
                 )
                 # widget.TextBox(
                 #     "",
@@ -173,13 +177,13 @@ default_screen = Screen(top=bar.Bar(
                 # ),
             ],
             24,
-            background = bckgBlue,
+            background = tertiaryColor1,
             gap = 7,
         ),
         # bottom = bar.Gap(7),
         # right = bar.Gap(7),
         # left = bar.Gap(7),
-        wallpaper = '/usr/share/xfce4/backdrops/xubuntu-disco.png',
+        wallpaper = wpl,
         wallpaper_mode = 'fill',
     )
 screens = [default_screen]
@@ -191,35 +195,35 @@ if (num_monitors == 2):
                 #    scale = 0.9
                 #),
                 widget.TextBox(
-                    text = "",
-                    foreground = "#ffffff",
-                    background = bckgBlue,
-                    padding = 6,
+                    text = "",
+                    foreground = tertiaryColor2,
+                    background = tertiaryColor1,
+                    # padding = 6,
                     fontsize = 15
                 ),
                 widget.Spacer(
                     length = 5,
                 ),
                 widget.GroupBox(
-                    inactive = gbInactive,
-                    active = gbActive,
+                    inactive = tertiaryColor2,
+                    active = tertiaryColor2,
                     fontsize = 11,
                     margin_y = 3,
                     margin_x = 0,
                     padding_y = 5,
                     padding_x = 2,
                     borderwidth = 3,
-                    this_current_screen_border = gbThisScreenB,
-                    this_screen_border = gbThisScreenB,
-                    other_current_screen_border = gbOtherScreenB,
-                    other_screen_border = gbOtherScreenB,
-                    highlight_color = gbHighLight,
+                    this_current_screen_border = tertiaryColor2,
+                    this_screen_border = tertiaryColor2,
+                    other_current_screen_border = secondaryColor,
+                    other_screen_border = secondaryColor,
+                    highlight_color = primaryColor,
                     highlight_method = "line",
                 ),
                 widget.TaskList(
                     txt_floating = "🗖",
                     max_title_width = 200,
-                    border = bckgPurple,
+                    border = primaryColor,
                     padding_y = 1,
                     borderwidth = 3,
                     highlight_method = "block",
@@ -229,74 +233,62 @@ if (num_monitors == 2):
                 widget.Sep(
                     linespace = 0,
                     padding = 5,
-                    foreground = bckgBlue,
-                    background = bckgBlue,
+                    foreground = tertiaryColor1,
+                    background = tertiaryColor1,
                 ),
                 widget.TextBox(
                     "",
                     fontsize = 19.5,
                     padding = 0,
-                    foreground = bckgPurple,
-                    background = bckgBlue,
+                    foreground = primaryColor,
+                    background = tertiaryColor1,
                 ),
-                widget.TextBox(
-                    batteryIcon,
-                    fontsize = 13,
-                    foreground = textNForeG,
-                    background = bckgPurple,
-                ),
-                # widget.Spacer(
-                #     length = 3,
-                #     background = bckgPurple,
-                # ),
                 widget.Battery(
-                    # charging_char = charging,
-                    # discharge_char = threeqpercent,
-                    foreground = textNForeG,
-                    background = bckgPurple,
+                    foreground = tertiaryColor2,
+                    background = primaryColor,
                 ),
                 widget.TextBox(
                     "",
                     fontsize = 22,
                     padding = 0,
-                    foreground = bckgCyan,
-                    background = bckgPurple,
+                    foreground = secondaryColor,
+                    background = primaryColor,
                 ),
                 widget.TextBox(
                     "Vol:",
                     # padding = 0,
-                    foreground = textNForeG,
-                    background = bckgCyan,
+                    foreground = tertiaryColor2,
+                    background = secondaryColor,
                 ),
                 widget.Volume(
                     # padding = 0,
-                    foreground = textNForeG,
-                    background = bckgCyan,
+                    foreground = tertiaryColor2,
+                    background = secondaryColor,
                 ),
                 widget.TextBox(
                     "",
                     fontsize = 22,
                     padding = 0,
-                    foreground = bckgPurple,
-                    background = bckgCyan,
+                    foreground = primaryColor,
+                    background = secondaryColor,
                 ),
                 widget.Clock(
                     format='%Y-%m-%d %a %I:%M %p',
-                    background = bckgPurple,
+                    background = primaryColor,
                 ),
                 widget.TextBox(
                     "",
                     fontsize = 22,
                     padding = 0,
-                    foreground = bckgCyan,
-                    background = bckgPurple,
+                    foreground = secondaryColor,
+                    background = primaryColor,
                 ),
                 widget.CurrentLayout(
-                    background = bckgCyan,
+                    background = secondaryColor,
                 )
             ],
             24,
-            background = bckgBlue,
+            background = tertiaryColor1,
         ),
         # bottom = bar.Gap(7),
         # right = bar.Gap(7),

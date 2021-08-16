@@ -84,7 +84,7 @@ cursor_warp = False
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 
-wmname = "QTile"
+wmname = "LG3D"
 
 def main(qtile):
     pass

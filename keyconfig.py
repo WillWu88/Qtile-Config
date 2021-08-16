@@ -1,12 +1,26 @@
 # import the qtile package
 from libqtile.config import Key, Group, Drag, Click
 from libqtile.lazy import lazy
+from libqtile import extension
 from workspace import groups
 
 # Programs and keys
 browser = "firefox"
-term = "xterm"
+term = "alacritty"
 mod = "mod4"
+
+def backlight(action):
+    def f(qtile):
+        brightness = int(subprocess.run(['xbacklight', '-get'],
+                                        stdout=subprocess.PIPE).stdout)
+        if brightness != 1 or action != 'dec':
+            if (brightness > 49 and action == 'dec') \
+                                or (brightness > 39 and action == 'inc'):
+                subprocess.run(['xbacklight', f'-{action}', '10',
+                                '-fps', '10'])
+            else:
+                subprocess.run(['xbacklight', f'-{action}', '1'])
+    return f
 
 keys = [
     # Switch between windows in current stack pane
@@ -19,8 +33,10 @@ keys = [
     Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
 
-    Key([mod, "shift"], "l", lazy.layout.swap_right(), lazy.layout.client_to_previous()),
-    Key([mod, "shift"], "h", lazy.layout.swap_left(), lazy.layout.client_to_next()),
+    Key([mod, "shift"], "l", lazy.layout.swap_right(),
+        lazy.layout.client_to_previous()),
+    Key([mod, "shift"], "h", lazy.layout.swap_left(),
+        lazy.layout.client_to_next()),
 
     # Switch window focus to other pane(s) of stack
     Key([mod], "space", lazy.layout.next()),
@@ -44,8 +60,9 @@ keys = [
     Key([mod], "Return", lazy.spawn(term)), # terminal 
     Key([mod], "BackSpace", lazy.spawn(browser)), # browser
     Key([mod], "v", lazy.spawn(term+" -e vim")), # vim
-    Key([mod], "e", lazy.spawn("emacsclient -c -a emacs"), desc='emacs'), # emacs
-    Key([mod], "p", lazy.spawn(term+" -e scrot")), # screenshot
+    Key([mod], "e", lazy.spawn("emacsclient -c -a emacs"), desc='emacs'),# emacs
+    Key([mod, "shift"], "p", lazy.spawn(term+" -e scrot")), # screenshot
+    Key([mod], "r", lazy.spawn("rofi -show drun")),
 
 
     # Toggle between different layouts as defined below
@@ -58,13 +75,14 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown()),
 
     # Audio Control
-    Key([], "XF86AudioMute", lazy.spawn("amixer -D pulse set Master 1+ toggle")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 sset Master 3- unmute")),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 sset Master 3+ unmute")),
-
-    # brightness are handled by xfce base
-    # Key([], 'XF86MonBrightnessUp',   lazy.function(backlight('inc'))),
-    # Key([], 'XF86MonBrightnessDown', lazy.function(backlight('dec'))),
+    Key([], "XF86AudioMute",
+        lazy.spawn("amixer -D pulse set Master 1+ toggle")),
+    Key([], "XF86AudioLowerVolume",
+        lazy.spawn("amixer -c 0 sset Master 3- unmute")),
+    Key([], "XF86AudioRaiseVolume",
+        lazy.spawn("amixer -c 0 sset Master 3+ unmute")),
+    Key([], 'XF86MonBrightnessUp',   lazy.function(backlight('inc'))),
+    Key([], 'XF86MonBrightnessDown', lazy.function(backlight('dec'))),
 
     # toggle window stat
     Key([mod], 'm', lazy.window.toggle_minimize()),
@@ -87,7 +105,8 @@ for i in groups:
         Key([mod], i.name, lazy.group[i.name].toscreen()),
 
         # mod1 + shift + letter of group = switch to & move focused window to group
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True)),
+        Key([mod, "shift"], i.name,
+            lazy.window.togroup(i.name, switch_group=True)),
     ])
 
 # Drag floating layouts.
