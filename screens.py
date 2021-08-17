@@ -13,7 +13,7 @@ twoqpercent = " "
 oneqpercent = " "
 batteryLow = " "
 charging = " "
-wpl = '/usr/share/backgrounds/mono.png'
+wpl = '/usr/share/backgrounds/xfce/xfce-verticals.png'
 
 def get_bat_icon():
     batPercent = psutil.sensors_battery().percent
@@ -81,7 +81,7 @@ default_screen = Screen(top=bar.Bar(
                     foreground = tertiaryColor2,
                     background = tertiaryColor1,
                     padding = 6,
-                    fontsize = 15
+                    fontsize = 15,
                 ),
                 widget.Spacer(
                     length = 5,
@@ -103,7 +103,7 @@ default_screen = Screen(top=bar.Bar(
                     highlight_method = "line",
                 ),
                 widget.TaskList(
-                    txt_floating = "🗖",
+                    txt_floating = "",
                     max_title_width = 200,
                     border = primaryColor,
                     padding_y = 1,
@@ -142,10 +142,14 @@ default_screen = Screen(top=bar.Bar(
                     foreground = tertiaryColor2,
                     background = secondaryColor,
                 ),
-                widget.Volume(
+                widget.PulseVolume(
+                    get_volume_cmd = "pamixer --get-volume",
                     # padding = 0,
                     foreground = tertiaryColor2,
                     background = secondaryColor,
+                    volume_app = "pamixer",
+                    step = 5,
+                    update_interval = 0.1
                 ),
                 widget.TextBox(
                     "",
@@ -221,7 +225,7 @@ if (num_monitors == 2):
                     highlight_method = "line",
                 ),
                 widget.TaskList(
-                    txt_floating = "🗖",
+                    txt_floating = "",
                     max_title_width = 200,
                     border = primaryColor,
                     padding_y = 1,
@@ -260,10 +264,14 @@ if (num_monitors == 2):
                     foreground = tertiaryColor2,
                     background = secondaryColor,
                 ),
-                widget.Volume(
+                widget.PulseVolume(
                     # padding = 0,
                     foreground = tertiaryColor2,
                     background = secondaryColor,
+                    volume_app = "pamixer",
+                    step = 5,
+                    get_volume_cmd = "pamixer --get-volume",
+                    update_interval = 0.1
                 ),
                 widget.TextBox(
                     "",
@@ -293,7 +301,7 @@ if (num_monitors == 2):
         # bottom = bar.Gap(7),
         # right = bar.Gap(7),
         # left = bar.Gap(7),
-        wallpaper = '/usr/share/xfce4/backdrops/xubuntu-disco.png',
+        wallpaper = wpl,
         wallpaper_mode = 'fill',
     )
     )

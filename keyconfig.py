@@ -76,11 +76,11 @@ keys = [
 
     # Audio Control
     Key([], "XF86AudioMute",
-        lazy.spawn("amixer -D pulse set Master 1+ toggle")),
+        lazy.spawn("pamixer -t")),
     Key([], "XF86AudioLowerVolume",
-        lazy.spawn("amixer -c 0 sset Master 3- unmute")),
+        lazy.spawn("pamixer -d 5")),
     Key([], "XF86AudioRaiseVolume",
-        lazy.spawn("amixer -c 0 sset Master 3+ unmute")),
+        lazy.spawn("pamixer -i 5")),
     Key([], 'XF86MonBrightnessUp',   lazy.function(backlight('inc'))),
     Key([], 'XF86MonBrightnessDown', lazy.function(backlight('dec'))),
 
