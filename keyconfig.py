@@ -62,7 +62,7 @@ keys = [
     Key([mod], "v", lazy.spawn(term+" -e vim")), # vim
     Key([mod], "e", lazy.spawn("emacsclient -c -a emacs"), desc='emacs'),# emacs
     Key([mod, "shift"], "p", lazy.spawn(term+" -e scrot")), # screenshot
-    Key([mod], "r", lazy.spawn("rofi -show drun")),
+    Key([mod], "r", lazy.spawn("rofi -show combi")),
 
 
     # Toggle between different layouts as defined below

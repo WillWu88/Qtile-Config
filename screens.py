@@ -60,7 +60,7 @@ def get_num_monitors():
 num_monitors = get_num_monitors()
 
 widget_defaults = dict(
-    font='Source Code Pro',
+    font = "DejaVu Sans Mono for Powerline Bold",
     fontsize=12,
     padding=3,
 )
@@ -77,14 +77,15 @@ default_screen = Screen(top=bar.Bar(
                 #    scale = 0.9
                 #),
                 widget.TextBox(
-                    text = "",
+                    text = "",
                     foreground = tertiaryColor2,
                     background = tertiaryColor1,
                     padding = 6,
-                    fontsize = 15,
+                    fontsize = 25,
                 ),
                 widget.Spacer(
                     length = 5,
+                    **extension_defaults
                 ),
                 widget.GroupBox(
                     inactive = tertiaryColor2,
@@ -109,7 +110,7 @@ default_screen = Screen(top=bar.Bar(
                     padding_y = 1,
                     borderwidth = 3,
                     highlight_method = "block",
-                    icon_size = 15
+                    icon_size = 15,
                 ),
                 widget.Systray(),
                 widget.Sep(
@@ -119,8 +120,8 @@ default_screen = Screen(top=bar.Bar(
                     background = tertiaryColor1,
                 ),
                 widget.TextBox(
-                    "",
-                    fontsize = 19.5,
+                    "",
+                    fontsize = 22,
                     padding = 0,
                     foreground = primaryColor,
                     background = tertiaryColor1,
@@ -130,14 +131,14 @@ default_screen = Screen(top=bar.Bar(
                     background = primaryColor,
                 ),
                 widget.TextBox(
-                    "",
+                    "",
                     fontsize = 22,
                     padding = 0,
                     foreground = secondaryColor,
                     background = primaryColor,
                 ),
                 widget.TextBox(
-                    "Vol:",
+                    "VOL:",
                     # padding = 0,
                     foreground = tertiaryColor2,
                     background = secondaryColor,
@@ -152,7 +153,7 @@ default_screen = Screen(top=bar.Bar(
                     update_interval = 0.1
                 ),
                 widget.TextBox(
-                    "",
+                    "",
                     fontsize = 22,
                     padding = 0,
                     foreground = primaryColor,
@@ -163,7 +164,7 @@ default_screen = Screen(top=bar.Bar(
                     background = primaryColor,
                 ),
                 widget.TextBox(
-                    "",
+                    "",
                     fontsize = 22,
                     padding = 0,
                     foreground = secondaryColor,
@@ -231,7 +232,7 @@ if (num_monitors == 2):
                     padding_y = 1,
                     borderwidth = 3,
                     highlight_method = "block",
-                    icon_size = 15
+                    icon_size = 15,
                 ),
                 widget.Systray(),
                 widget.Sep(
@@ -241,8 +242,8 @@ if (num_monitors == 2):
                     background = tertiaryColor1,
                 ),
                 widget.TextBox(
-                    "",
-                    fontsize = 19.5,
+                    "",
+                    fontsize = 22,
                     padding = 0,
                     foreground = primaryColor,
                     background = tertiaryColor1,
@@ -252,14 +253,14 @@ if (num_monitors == 2):
                     background = primaryColor,
                 ),
                 widget.TextBox(
-                    "",
+                    "",
                     fontsize = 22,
                     padding = 0,
                     foreground = secondaryColor,
                     background = primaryColor,
                 ),
                 widget.TextBox(
-                    "Vol:",
+                    "VOL:",
                     # padding = 0,
                     foreground = tertiaryColor2,
                     background = secondaryColor,
@@ -274,7 +275,7 @@ if (num_monitors == 2):
                     update_interval = 0.1
                 ),
                 widget.TextBox(
-                    "",
+                    "",
                     fontsize = 22,
                     padding = 0,
                     foreground = primaryColor,
@@ -285,7 +286,7 @@ if (num_monitors == 2):
                     background = primaryColor,
                 ),
                 widget.TextBox(
-                    "",
+                    "",
                     fontsize = 22,
                     padding = 0,
                     foreground = secondaryColor,
