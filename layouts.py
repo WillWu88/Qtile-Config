@@ -12,5 +12,5 @@ layouts = [
     layout.Stack(num_stacks=2, fair = True, **layout_param),
     layout.Stack(num_stacks=1, **layout_param),
     layout.RatioTile(**layout_param),
-    layout.Floating(),
+    layout.Floating(**layout_param),
 ]

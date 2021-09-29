@@ -63,6 +63,7 @@ keys = [
     Key([mod], "e", lazy.spawn("emacsclient -c -a emacs"), desc='emacs'),# emacs
     Key([mod, "shift"], "p", lazy.spawn(term+" -e scrot")), # screenshot
     Key([mod], "r", lazy.spawn("rofi -show combi")),
+    Key([mod], "g", lazy.spwan("galendae")),
 
 
     # Toggle between different layouts as defined below

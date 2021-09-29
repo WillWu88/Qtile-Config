@@ -1,5 +1,5 @@
 from libqtile.config import Screen 
-from libqtile import layout, bar, widget
+from libqtile import layout, bar, widget, qtile
 from Xlib import display as xdisplay
 
 
@@ -82,6 +82,9 @@ default_screen = Screen(top=bar.Bar(
                     background = tertiaryColor1,
                     padding = 6,
                     fontsize = 25,
+                    mouse_callbacks = {
+                        'Button1': lambda: qtile.cmd_spawn('rofi -show combi'),
+                    }
                 ),
                 widget.Spacer(
                     length = 5,
@@ -112,19 +115,36 @@ default_screen = Screen(top=bar.Bar(
                     highlight_method = "block",
                     icon_size = 15,
                 ),
-                widget.Systray(),
-                widget.Sep(
-                    linespace = 0,
-                    padding = 5,
-                    foreground = tertiaryColor1,
+                widget.TextBox(
+                    "",
+                    fontsize = 22,
+                    padding = 0,
+                    foreground = secondaryColor,
                     background = tertiaryColor1,
                 ),
+                # widget.NetGraph(
+                #     mouse_callbacks = {
+                #         'Button1': lambda: qtile.cmd_spawn('nm-applet'),
+                #     },
+                #     background = secondaryColor,
+                #     type = 'line',
+                # ),
+                widget.Systray(
+                    systray = "trayer",
+                    background = secondaryColor,
+                ),
+                # widget.Sep(
+                #     linespace = 0,
+                #     padding = 5,
+                #     foreground = tertiaryColor1,
+                #     background = tertiaryColor1,
+                # ),
                 widget.TextBox(
                     "",
                     fontsize = 22,
                     padding = 0,
                     foreground = primaryColor,
-                    background = tertiaryColor1,
+                    background = secondaryColor,
                 ),
                 widget.Battery(
                     foreground = tertiaryColor2,
@@ -162,6 +182,9 @@ default_screen = Screen(top=bar.Bar(
                 widget.Clock(
                     format='%Y-%m-%d %a %I:%M %p',
                     background = primaryColor,
+                    mouse_callbacks = {
+                        'Button1': lambda: qtile.cmd_spawn('galendae'),
+                    }
                 ),
                 widget.TextBox(
                     "",
@@ -191,23 +214,24 @@ default_screen = Screen(top=bar.Bar(
         wallpaper = wpl,
         wallpaper_mode = 'fill',
     )
-screens = [default_screen]
-if (num_monitors == 2):
-    screens.append(Screen(
-        top=bar.Bar(
+second_Screen = Screen(top=bar.Bar(
             [
                 #widget.CurrentLayoutIcon(
                 #    scale = 0.9
                 #),
                 widget.TextBox(
-                    text = "",
+                    text = "",
                     foreground = tertiaryColor2,
                     background = tertiaryColor1,
-                    # padding = 6,
-                    fontsize = 15
+                    padding = 6,
+                    fontsize = 25,
+                    mouse_callbacks = {
+                        'Button1': lambda: qtile.cmd_spawn('rofi -show combi'),
+                    }
                 ),
                 widget.Spacer(
                     length = 5,
+                    **extension_defaults
                 ),
                 widget.GroupBox(
                     inactive = tertiaryColor2,
@@ -234,19 +258,36 @@ if (num_monitors == 2):
                     highlight_method = "block",
                     icon_size = 15,
                 ),
-                widget.Systray(),
-                widget.Sep(
-                    linespace = 0,
-                    padding = 5,
-                    foreground = tertiaryColor1,
+                widget.TextBox(
+                    "",
+                    fontsize = 22,
+                    padding = 0,
+                    foreground = secondaryColor,
                     background = tertiaryColor1,
                 ),
+                # widget.NetGraph(
+                #     mouse_callbacks = {
+                #         'Button1': lambda: qtile.cmd_spawn('nm-applet'),
+                #     },
+                #     background = secondaryColor,
+                #     type = 'line',
+                # ),
+                widget.Memory(
+                    background = secondaryColor,
+
+                ),
+                # widget.Sep(
+                #     linespace = 0,
+                #     padding = 5,
+                #     foreground = tertiaryColor1,
+                #     background = tertiaryColor1,
+                # ),
                 widget.TextBox(
                     "",
                     fontsize = 22,
                     padding = 0,
                     foreground = primaryColor,
-                    background = tertiaryColor1,
+                    background = secondaryColor,
                 ),
                 widget.Battery(
                     foreground = tertiaryColor2,
@@ -266,12 +307,12 @@ if (num_monitors == 2):
                     background = secondaryColor,
                 ),
                 widget.PulseVolume(
+                    get_volume_cmd = "pamixer --get-volume",
                     # padding = 0,
                     foreground = tertiaryColor2,
                     background = secondaryColor,
                     volume_app = "pamixer",
                     step = 5,
-                    get_volume_cmd = "pamixer --get-volume",
                     update_interval = 0.1
                 ),
                 widget.TextBox(
@@ -284,6 +325,9 @@ if (num_monitors == 2):
                 widget.Clock(
                     format='%Y-%m-%d %a %I:%M %p',
                     background = primaryColor,
+                    mouse_callbacks = {
+                        'Button1': lambda: qtile.cmd_spawn('galendae'),
+                    }
                 ),
                 widget.TextBox(
                     "",
@@ -295,9 +339,17 @@ if (num_monitors == 2):
                 widget.CurrentLayout(
                     background = secondaryColor,
                 )
+                # widget.TextBox(
+                #     "",
+                #     fontsize = 22,
+                #     padding = 0,
+                #     foreground = bckgCyan,
+                #     background = bckgPurple,
+                # ),
             ],
             24,
             background = tertiaryColor1,
+            gap = 7,
         ),
         # bottom = bar.Gap(7),
         # right = bar.Gap(7),
@@ -305,7 +357,10 @@ if (num_monitors == 2):
         wallpaper = wpl,
         wallpaper_mode = 'fill',
     )
-    )
+
+screens = [default_screen]
+if (num_monitors == 2):
+    screens.append(second_Screen)
 if (num_monitors == 1) & (len(screens) == 2):
     screens = [default_screen]
 
