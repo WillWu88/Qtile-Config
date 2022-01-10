@@ -63,7 +63,7 @@ keys = [
     Key([mod], "e", lazy.spawn("emacsclient -c -a emacs"), desc='emacs'),# emacs
     Key([mod, "shift"], "p", lazy.spawn(term+" -e scrot")), # screenshot
     Key([mod], "r", lazy.spawn("rofi -show combi")),
-    Key([mod], "g", lazy.spwan("galendae")),
+    Key([mod], "g", lazy.spawn("galendae")),
 
 
     # Toggle between different layouts as defined below
@@ -84,6 +84,10 @@ keys = [
         lazy.spawn("pamixer -i 5")),
     Key([], 'XF86MonBrightnessUp',   lazy.function(backlight('inc'))),
     Key([], 'XF86MonBrightnessDown', lazy.function(backlight('dec'))),
+    Key([], 'XF86AudioPlay', lazy.spawn("playerctl play-pause")),
+    Key([], 'XF86AudioNext', lazy.spawn("playerctl next")),
+    Key([], 'XF86AudioPrev', lazy.spawn("playerctl previous")),
+
 
     # toggle window stat
     Key([mod], 'm', lazy.window.toggle_minimize()),

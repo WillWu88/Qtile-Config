@@ -13,7 +13,6 @@ twoqpercent = " "
 oneqpercent = " "
 batteryLow = " "
 charging = " "
-wpl = '/usr/share/backgrounds/xfce/xfce-verticals.png'
 
 def get_bat_icon():
     batPercent = psutil.sensors_battery().percent

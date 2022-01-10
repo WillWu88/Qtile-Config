@@ -49,6 +49,7 @@ import os
 @hook.subscribe.screen_change
 def restart_on_randr(qtile, ev):
     qtile.cmd_restart()
+    lazy.restart()
 
 @hook.subscribe.startup
 def dbus_register():
