@@ -118,8 +118,20 @@ default_screen = Screen(top=bar.Bar(
                     "",
                     fontsize = 22,
                     padding = 0,
-                    foreground = secondaryColor,
+                    foreground = primaryColor,
                     background = tertiaryColor1,
+                ),
+                widget.Pomodoro(
+                    fontsize = 11,
+                    background = primaryColor,
+                    color_inactive = tertiaryColor2,
+                ),
+                widget.TextBox(
+                    "",
+                    fontsize = 22,
+                    padding = 0,
+                    foreground = secondaryColor,
+                    background = primaryColor,
                 ),
                 # widget.NetGraph(
                 #     mouse_callbacks = {
@@ -148,6 +160,7 @@ default_screen = Screen(top=bar.Bar(
                 widget.Battery(
                     foreground = tertiaryColor2,
                     background = primaryColor,
+                    format = '{char} {percent:2.0%} {hour:d}:{min:02d}'
                 ),
                 widget.TextBox(
                     "",
@@ -357,10 +370,9 @@ second_Screen = Screen(top=bar.Bar(
         wallpaper_mode = 'fill',
     )
 
+# screens = []
 screens = [default_screen]
 if (num_monitors == 2):
     screens.append(second_Screen)
 if (num_monitors == 1) & (len(screens) == 2):
     screens = [default_screen]
-
-
