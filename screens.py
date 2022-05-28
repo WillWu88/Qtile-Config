@@ -130,7 +130,7 @@ default_screen = Screen(top=bar.Bar(
                     "",
                     fontsize = 22,
                     padding = 0,
-                    foreground = secondaryColor,
+                    foreground = tertiaryColor1,
                     background = primaryColor,
                 ),
                 # widget.NetGraph(
@@ -142,7 +142,7 @@ default_screen = Screen(top=bar.Bar(
                 # ),
                 widget.Systray(
                     systray = "trayer",
-                    background = secondaryColor,
+                    background = tertiaryColor1,
                 ),
                 # widget.Sep(
                 #     linespace = 0,
@@ -155,7 +155,7 @@ default_screen = Screen(top=bar.Bar(
                     fontsize = 22,
                     padding = 0,
                     foreground = primaryColor,
-                    background = secondaryColor,
+                    background = tertiaryColor1,
                 ),
                 widget.Battery(
                     foreground = tertiaryColor2,
@@ -166,20 +166,20 @@ default_screen = Screen(top=bar.Bar(
                     "",
                     fontsize = 22,
                     padding = 0,
-                    foreground = secondaryColor,
+                    foreground = tertiaryColor1,
                     background = primaryColor,
                 ),
                 widget.TextBox(
                     "VOL:",
                     # padding = 0,
                     foreground = tertiaryColor2,
-                    background = secondaryColor,
+                    background = tertiaryColor1,
                 ),
                 widget.PulseVolume(
                     get_volume_cmd = "pamixer --get-volume",
                     # padding = 0,
                     foreground = tertiaryColor2,
-                    background = secondaryColor,
+                    background = tertiaryColor1,
                     volume_app = "pamixer",
                     step = 5,
                     update_interval = 0.1
@@ -189,7 +189,7 @@ default_screen = Screen(top=bar.Bar(
                     fontsize = 22,
                     padding = 0,
                     foreground = primaryColor,
-                    background = secondaryColor,
+                    background = tertiaryColor1,
                 ),
                 widget.Clock(
                     format='%Y-%m-%d %a %I:%M %p',
@@ -202,11 +202,11 @@ default_screen = Screen(top=bar.Bar(
                     "",
                     fontsize = 22,
                     padding = 0,
-                    foreground = secondaryColor,
+                    foreground = tertiaryColor1,
                     background = primaryColor,
                 ),
                 widget.CurrentLayout(
-                    background = secondaryColor,
+                    background = tertiaryColor1,
                 )
                 # widget.TextBox(
                 #     "",
