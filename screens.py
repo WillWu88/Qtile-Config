@@ -58,15 +58,15 @@ def get_num_monitors():
 
 num_monitors = get_num_monitors()
 
+user_font = 'DejaVu Sans Mono for Powerline Bold'
+
 widget_defaults = dict(
-    font = "DejaVu Sans Mono for Powerline Bold",
+    font = user_font,
     fontsize=12,
     padding=3,
 )
 
 extension_defaults = dict(
-    font='Sauce Code Pro',
-    fontsize=12,
     padding=3,
 )
 
@@ -104,6 +104,7 @@ default_screen = Screen(top=bar.Bar(
                     other_screen_border = secondaryColor,
                     highlight_color = primaryColor,
                     highlight_method = "line",
+                    font = user_font,
                 ),
                 widget.TaskList(
                     txt_floating = "",
@@ -123,6 +124,7 @@ default_screen = Screen(top=bar.Bar(
                 ),
                 widget.Pomodoro(
                     fontsize = 11,
+                    font = user_font,
                     background = primaryColor,
                     color_inactive = tertiaryColor2,
                 ),
@@ -223,16 +225,15 @@ default_screen = Screen(top=bar.Bar(
         # bottom = bar.Gap(7),
         # right = bar.Gap(7),
         # left = bar.Gap(7),
-        wallpaper = wpl,
-        wallpaper_mode = 'fill',
     )
 second_Screen = Screen(top=bar.Bar(
             [
                 #widget.CurrentLayoutIcon(
+
                 #    scale = 0.9
                 #),
                 widget.TextBox(
-                    text = "",
+                    text = 'Run:', #"",
                     foreground = tertiaryColor2,
                     background = tertiaryColor1,
                     padding = 6,
@@ -366,8 +367,6 @@ second_Screen = Screen(top=bar.Bar(
         # bottom = bar.Gap(7),
         # right = bar.Gap(7),
         # left = bar.Gap(7),
-        wallpaper = wpl,
-        wallpaper_mode = 'fill',
     )
 
 # screens = []

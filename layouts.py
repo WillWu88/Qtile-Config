@@ -1,8 +1,8 @@
 from libqtile import layout
 from colors import *
 
-layout_param = {"border_focus": primaryColor,
-                "border_normal": tertiaryColor2,
+layout_param = {"border_focus": tertiaryColor2,
+                "border_normal": primaryColor,
                 "border_width": 3,
                 "margin": 10,
                }

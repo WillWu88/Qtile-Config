@@ -3,8 +3,8 @@ from libqtile.config import Group, Match
 
 groups = [
         Group("1", layout="monadtall", label="SCH"),
-        Group("2", label="ORG"),
-        Group("3", label="DOC"),
+        Group("2", label="DOC"),
+        Group("3", label="ORG"),
         Group("4", label="PRO"),
         Group("5", label="ENT"),
         Group("6", layout="floating", label="FLT",
